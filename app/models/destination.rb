@@ -1,4 +1,6 @@
 class Destination < ApplicationRecord
+    validates :city, presence: true
+    validates :country, presence: true
     has_many :pins
     has_many :users, through: :pin
 

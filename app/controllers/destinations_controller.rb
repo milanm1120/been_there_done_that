@@ -14,10 +14,23 @@ class DestinationsController < ApplicationController
     end
 
     def new
-        
+        @destination = Destination.new
     end
 
     def create
-        @destination = Destination.new
+        @destination = Destination.new(destination_params)            #will only allow the listed attributes(values) to be added to the key(destination)
+        if @destination.save
+            redirect_to destinations_path
+        else
+            render :new
+        end
     end
+
+
+
+    private
+        def destination_params
+            params.require(:destination).permit(:city, :state, :country)
+        end
+
 end

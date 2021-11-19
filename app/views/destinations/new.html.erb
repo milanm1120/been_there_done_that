@@ -1,1 +1,32 @@
 <h1> New Destinations Form</h1>
+
+<form method = "POST" action = "/destinations">
+    <input type="hidden" name= authenticity_token value= "<%= form_authenticity_token %>">
+    <label for="city">City: <input type="text" name="destination[city]" id="city"></label></br>
+    <label for="state">State: <input type="text" name="destination[state]" id="state"></label></br>
+    <label for="country">Country: <input type="text" name="destination[country]" id="country"></label></br>
+
+    <input type="submit" value="Add Destination">
+</form>
+
+
+<%= form_tag(destinations_path) do %>
+    <%= label_tag (:"destination_city") %>
+    <%= text_field_tag :"destination[city]" %>
+    <%= label_tag (:"destination_state") %>
+    <%= text_field_tag :"destination[state]" %>
+    <%= label_tag (:"destination_country") %>
+    <%= text_field_tag :"destination[country]" %>
+    <%= submit_tag "Add Destination" %>
+    <% end %>
+
+
+<%= form_for(@destination) do |f| %>         <!-- form for is on models not URLs -->
+    <%= f.label :city %>
+    <%= f.text_field :city %>
+    <%= f.label :state %>
+    <%= f.text_field :state %>
+    <%= f.label :country %>
+    <%= f.text_field :country %>
+    <%= submit_tag "Add Destination" %>
+<% end %>
