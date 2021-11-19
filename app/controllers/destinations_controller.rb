@@ -12,4 +12,12 @@ class DestinationsController < ApplicationController
         @destinations = Destination.order_country           #order_contry def'ed in models/destination.rb
         render :index
     end
+
+    def new
+        
+    end
+
+    def create
+        @destination = Destination.new
+    end
 end
