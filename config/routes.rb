@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   get '/destinations/most_visited_country', to: 'destinations#most_visited_country'     #order matters, again because of dynamic routes (:id), place custom routes above dynamic routes
   # get '/destinations/:id', to: 'destinations#show', as: 'destination'  #to view only one destionation 
   resources :destinations       #resources will build out the CRUD actions in one line vs having to dictate them individually
+  resources :pins
 end

@@ -1,4 +1,5 @@
 class DestinationsController < ApplicationController
+    
     def index
         @destinations = Destination.all 
     end
@@ -17,15 +18,15 @@ class DestinationsController < ApplicationController
     end
 
     def show
-        @destination = Destination.find_by_id(params[:id])
+        find_destination                                            #private method>>
     end
 
     def edit
-        @destination = Destination.find_by_id(params[:id])
+        find_destination
     end
 
     def update
-        @destination = Destination.find_by_id(params[:id])
+        find_destination
         @destination.update(destination_params)
         if @destination.valid?
             redirect_to destinations_path(@destination)
@@ -35,14 +36,14 @@ class DestinationsController < ApplicationController
     end
 
     def destroy
-        @destination = Destination.find_by_id(params[:id])
-        @destination.destroy
-        redirect_to destinations_path
+        find_destination
+        @destination.destroy                                       #destroy removes all associated items assigned to the item
+            redirect_to destinations_path
     end
 
     def most_visited_country
         @destinations = Destination.order_country           #order_contry def'ed in models/destination.rb
-        render :index
+            render :index
     end
 
 
@@ -50,6 +51,10 @@ class DestinationsController < ApplicationController
     private
         def destination_params
             params.require(:destination).permit(:city, :state, :country)
+        end
+
+        def find_destination
+            @destination = Destination.find_by_id(params[:id])
         end
 
 end

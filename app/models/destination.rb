@@ -1,6 +1,5 @@
 class Destination < ApplicationRecord
-    validates :city, presence: true
-    validates :country, presence: true
+    validates :city, :country, presence: true               #validates is a class method produced from ActiveRecords
     has_many :pins
     has_many :users, through: :pin
 

@@ -3,3 +3,5 @@
     <% @destinations.each do |d| %>
             <h3><%= link_to d.city_state_country, destination_path(d.id) %></h3>            <!-- city_state_country is def'ed in models/destination.rb -->
     <% end %>
+
+<button><%= link_to "Add New Destination", new_destination_path(@destination) %></button></br>
