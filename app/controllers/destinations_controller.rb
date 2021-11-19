@@ -1,16 +1,6 @@
 class DestinationsController < ApplicationController
     def index
-        @destinations = Destination.all
-        
-    end
-
-    def show
-        @destination = Destination.find_by_id(params[:id])
-    end
-
-    def most_visited_country
-        @destinations = Destination.order_country           #order_contry def'ed in models/destination.rb
-        render :index
+        @destinations = Destination.all 
     end
 
     def new
@@ -24,6 +14,35 @@ class DestinationsController < ApplicationController
         else
             render :new
         end
+    end
+
+    def show
+        @destination = Destination.find_by_id(params[:id])
+    end
+
+    def edit
+        @destination = Destination.find_by_id(params[:id])
+    end
+
+    def update
+        @destination = Destination.find_by_id(params[:id])
+        @destination.update(destination_params)
+        if @destination.valid?
+            redirect_to destinations_path(@destination)
+        else
+            render :edit
+        end
+    end
+
+    def destroy
+        @destination = Destination.find_by_id(params[:id])
+        @destination.destroy
+        redirect_to destinations_path
+    end
+
+    def most_visited_country
+        @destinations = Destination.order_country           #order_contry def'ed in models/destination.rb
+        render :index
     end
 
 
