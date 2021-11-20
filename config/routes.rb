@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   # get '/destinations/:id', to: 'destinations#show', as: 'destination'  #to view only one destionation 
   resources :destinations       #resources will build out the CRUD actions in one line vs having to dictate them individually
   resources :pins
+  resources :users
 end
