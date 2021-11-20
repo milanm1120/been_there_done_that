@@ -19,5 +19,12 @@
     <%= f.text_field :state %>
     <%= f.label :country %>
     <%= f.text_field :country %>
+    
+        <h3>Add Pin</h3>
+    <%= f.fields_for :pins do |p|%>
+        <%= p.label :rating %>
+        <%= p.text_field :rating %></br>
+    <% end %>
+
     <%= submit_tag "Add Destination" %>
 <% end %>

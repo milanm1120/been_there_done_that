@@ -6,7 +6,7 @@ class Pin < ApplicationRecord
 
   def destination_attributes=(hash_of_attributes)
     if !hash_of_attributes["city"].blank? && !hash_of_attributes["country"].blank?          #state is an optional entry
-        self.Desintation = Desintation.find_or_create_by(hash_of_attributes)
+        self.destination = Destination.find_or_create_by(hash_of_attributes)
     end
   end
 

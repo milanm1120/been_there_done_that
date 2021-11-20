@@ -13,7 +13,7 @@ class DestinationsController < ApplicationController
         if @destination.save
             redirect_to destinations_path
         else
-            render 'destinations/new'
+            render :new
         end
     end
 
@@ -31,7 +31,7 @@ class DestinationsController < ApplicationController
         if @destination.valid?
             redirect_to destinations_path(@destination)
         else
-            render 'destinatons/edit'
+            render :edit
         end
     end
 
