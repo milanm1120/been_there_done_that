@@ -14,6 +14,7 @@
 <%= form_with(model: @pin) do |f| %>         <!-- form_with allows you to pick between model or url. If you are going to use CRUD actions you need to use models. URLs are good for redirects/logins  -->
     <%= f.label :rating %>
     <%= f.text_field :rating %></br>
+    
 
         <h3>Destination</h3>
     <%= f.fields_for :destination do |d|%>          <!-- fields_for is used for nested forms -->
@@ -21,9 +22,11 @@
         <%= d.text_field :city %></br>
         <%= d.label :state %>
         <%= d.text_field :state %></br>
+        <%= f.collection_select :destination_id, Destination.all, :id, :state, include_blank: true %></br>
         <%= d.label :country %>
         <%= d.text_field :country %></br>
     <% end %> 
     
     <%= submit_tag "Add Your Pin" %>
 <% end %>  
+

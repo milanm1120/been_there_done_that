@@ -44,7 +44,7 @@ class PinsController < ApplicationController
 
     private
     def pin_params
-        params.require(:pin).permit(:rating, destination_attributes: [:city, :state, :country])
+        params.require(:pin).permit(:rating, :destination_id, destination_attributes: [:city, :state, :country])
     end
 
     def find_pin
