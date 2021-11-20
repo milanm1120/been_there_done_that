@@ -1,7 +1,21 @@
-<%= form_with(model: @pins) do |f| %>         <!-- form_with allows you to pick between model or url. If you are going to use CRUD actions you need to use models. URLs are good for redirects/logins  -->
-    <%= f.label :rating %>
-    <%= f.text_field :city %></br>
+<% if @pin.errors.any? %>           <!-- Displyaing Validation Errors -->
+  <div id="error_explanation">
+    <h2><%= pluralize(@pin.errors.count, "error") %> prohibited this article from being saved:</h2>
 
+    <ul>
+      <% @pin.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<%= form_with(model: @pin) do |f| %>         <!-- form_with allows you to pick between model or url. If you are going to use CRUD actions you need to use models. URLs are good for redirects/logins  -->
+    <%= f.label :rating %>
+    <%= f.text_field :rating %></br>
+
+        <h3>Destination</h3>
     <%= f.fields_for :destination do |d|%>          <!-- fields_for is used for nested forms -->
         <%= d.label :city %>
         <%= d.text_field :city %></br>
@@ -9,7 +23,7 @@
         <%= d.text_field :state %></br>
         <%= d.label :country %>
         <%= d.text_field :country %></br>
-    <% end %>
+    <% end %> 
     
-    <%= submit_tag "Add Destination" %>
-<% end %>
+    <%= submit_tag "Add Your Pin" %>
+<% end %>  

@@ -6,13 +6,14 @@ class PinsController < ApplicationController
 
     def new
         @pin = Pin.new
+        @pin.build_destination
     end
 
     def create
         @pin = Pin.new(pin_params)
         if @pin.save
             redirect_to pins_path
-        else
+        else 
             render :new
         end
     end
@@ -43,7 +44,7 @@ class PinsController < ApplicationController
 
     private
     def pin_params
-        params.require(:pin).permit(:user_id, :destination_id, :rating)
+        params.require(:pin).permit(:rating, destination_attributes: [:city, :state, :country])
     end
 
     def find_pin
