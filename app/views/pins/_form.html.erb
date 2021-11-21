@@ -1,0 +1,32 @@
+<% if @pin.errors.any? %>           
+  <div id="error_explanation">
+    <h2><%= pluralize(@pin.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+    <ul>
+      <% @pin.errors.each do |error| %>
+        <li><%= error.full_message %></li> 
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<h1>Create New Pin</h1>
+
+<%= form_with(model: @pin) do |f| %>         
+    <%= f.label :rating %>
+    <%= f.text_field :rating %></br>
+    
+
+        <h3>Destination</h3>
+    <%= f.fields_for :destination do |d|%>
+        <%= d.label :city %>
+        <%= d.text_field :city %></br>
+        <%= d.label :state %>
+        <%= d.text_field :state %></br>
+        <%= f.collection_select :destination_id, Destination.all, :id, :state, include_blank: true %></br>
+        <%= d.label :country %>
+        <%= d.text_field :country %></br>
+    <% end %> 
+    
+    <%= submit_tag "Add Your Pin" %>
+<% end %>  

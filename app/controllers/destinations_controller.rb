@@ -6,6 +6,7 @@ class DestinationsController < ApplicationController
 
     def new
         @destination = Destination.new
+        @destination.pins.build                 #build for a has_many relationship
     end
 
     def create
@@ -50,7 +51,7 @@ class DestinationsController < ApplicationController
 
     private
         def destination_params
-            params.require(:destination).permit(:city, :state, :country)
+            params.require(:destination).permit(:city, :state, :country, pins_attributes: [:rating])
         end
 
         def find_destination
