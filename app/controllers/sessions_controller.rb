@@ -9,10 +9,10 @@ class SessionsController < ApplicationController
     end
 
     def omniauth
-        user = User.find_or_create_by(uid: uid_auth['uid']) do |u|            #uid_auth is a private method
-            u.firstname = uid_auth['info']['first_name']
-            u.lastname = uid_auth['info']['last_name']
-            u.email = uid_auth['info']['email']
+        user = User.find_or_create_by(uid: auth['uid']) do |u|            #auth is a private method
+            u.firstname = auth['info']['first_name']
+            u.lastname = auth['info']['last_name']
+            u.email = auth['info']['email']
             u.password = SecureRandom.hex(20)
         end
         if user.valid?
@@ -37,7 +37,7 @@ class SessionsController < ApplicationController
 
     private
 
-    def  uid_auth
+    def  auth
         request.env['omniauth.auth']
     end
 
