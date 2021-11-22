@@ -1,7 +1,11 @@
 class PinsController < ApplicationController
 
     def index
-        @pins = Pin.all 
+        if params[:destination_id] && @destination = Destination.find_by_id(params[:destination_id])
+            @pins = @destination.pins
+        else
+            @pins = Pin.all
+        end
     end
 
     def new
