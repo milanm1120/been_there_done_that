@@ -12,6 +12,8 @@ delete '/logout', to: 'sessions#destroy'
   # get '/destinations/:id', to: 'destinations#show', as: 'destination'  #to view only one destionation 
   # resources :destinations       #resources will build out the CRUD actions in one line vs having to dictate them individually
   
+  get '/signup', to: 'users#new'
+  post '/signup', to: 'users#create'
   resources :users        #best to avoided nested routes for users
 
   resources :pins, only: [:new, :create, :index]
