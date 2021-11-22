@@ -10,16 +10,17 @@ class SessionsController < ApplicationController
 
     def omniauth
         user = User.find_or_create_by(uid: uid_auth['uid']) do |u|            #uid_auth is a private method
-            u.firstname = auth['info']['first_name']
-            u.lastname = auth['info']['last_name']
-            u.email = auth['info']['email']
+            u.firstname = uid_auth['info']['first_name']
+            u.lastname = uid_auth['info']['last_name']
+            u.email = uid_auth['info']['email']
             u.password = SecureRandom.hex(20)
         end
         if user.valid?
             session[:user_id] = user.id
             flash[:message] = "Successful Login!"
-            redirect_to shoes_path
+            redirect_to destinations_path
         else
+            redirect_to destinations_path
         end
         #firstname
         #lastname
@@ -27,11 +28,11 @@ class SessionsController < ApplicationController
         #password
         #uid
         #provider
-        byebug
     end
 
     def destroy
-
+        session.delete(:user_id)
+        redirect_to destinations_path
     end
 
     private
