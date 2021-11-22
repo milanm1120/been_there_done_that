@@ -1,4 +1,5 @@
 class PinsController < ApplicationController
+    before_action :redirect_if_not_logged_in            #method defined in application_controller
 
     def index
         if params[:destination_id] && @destination = Destination.find_by_id(params[:destination_id])

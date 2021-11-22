@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
     private
 
     def redirect_if_not_logged_in
-        
+        redirect_to login_path if !logged_in?           #logged_in? is defined in helpers/application_helper.rb
     end
 end

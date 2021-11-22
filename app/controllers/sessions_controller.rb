@@ -4,7 +4,14 @@ class SessionsController < ApplicationController
     end
 
     def create
-        
+        user = User.find_by_email(params[:user][:email])
+        if user && user.authenticate(params[:user][:password])
+            session[:user_id] = user.id
+            redirect_to destinations_path
+        else
+            flash[:message] = "Login failed. Please login or sign up. "
+            redirect_to '/login'
+        end
     end
 
     def omniauth
