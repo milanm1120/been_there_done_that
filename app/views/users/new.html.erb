@@ -1,12 +1,16 @@
-<h1> New User Signup Page </h1>
+<div class="welcome_font_color">
+    <h1> Lets Get You Registered </h1>
 
-<%= render partial: "layouts/error", locals: { object: @user} %>
+    <%= render partial: "layouts/error", locals: { object: @user} %>
 
-<%= form_for(@user, url: signup_path) do |f| %>
-    First Name: <%= f.text_field :firstname%></br>
-    Last Name: <%= f.text_field :lastname%></br>
-    Email: <%= f.text_field :email %></br>
-    Password: <%= f.password_field :password %></br></br>
-    <%= f.submit "Sign Up" %>
-    
-<% end %>
+    <%= form_for(@user, url: signup_path) do |f| %>
+        First Name: <%= f.text_field :firstname%></br>
+        Last Name: <%= f.text_field :lastname%></br>
+        Email: <%= f.text_field :email %></br>
+        Password: <%= f.password_field :password %></br></br>
+        <%= f.submit "Register" %>
+    <% end %>
+
+    </br>
+    <%= button_to 'Back To Welcome Page', root_path, :method => :get %>
+</div>

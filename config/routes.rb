@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 root to: 'sessions#welcome'
+get '/signup', to: 'users#new'
+post '/signup', to: 'users#create'
 get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
 get '/login', to: 'sessions#new'
-post 'login', to:'sessions#create'
+post '/login', to:'sessions#create'
 delete '/logout', to: 'sessions#destroy'
 
 
@@ -13,8 +15,7 @@ delete '/logout', to: 'sessions#destroy'
   # get '/destinations/:id', to: 'destinations#show', as: 'destination'  #to view only one destionation 
   # resources :destinations       #resources will build out the CRUD actions in one line vs having to dictate them individually
   
-  get '/signup', to: 'users#new'
-  post '/signup', to: 'users#create'
+  
   resources :users        #best to avoided nested routes for users
 
   resources :pins, only: [:new, :create, :index]

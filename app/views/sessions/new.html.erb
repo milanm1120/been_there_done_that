@@ -1,7 +1,12 @@
-<h1> Login Page </h1>
+<div class="welcome_font_color">
+    <h1> Please Enter Your Login Information Below</h1>
 
-<%= form_for :user do |f| %>
-    Email: <%= f.text_field :email %>
-    Password: <%= f.password_field :password %>
-    <%= f.submit "Log In" %>
-    <% end %>
+    <%= form_for :user do |f| %>
+        Email: <%= f.text_field :email %></br>
+        Password: <%= f.password_field :password %></br></br>
+        <%= f.submit "Log In" %>
+        <% end %>
+        </br>
+        
+    <%= button_to 'Back To Welcome Page', root_path, :method => :get %>
+</div>
