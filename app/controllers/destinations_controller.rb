@@ -1,4 +1,5 @@
 class DestinationsController < ApplicationController
+    before_action :find_destination, only: [:show, :edit, :update, :destroy]
     
     def index
         @destinations = Destination.all 
@@ -18,16 +19,13 @@ class DestinationsController < ApplicationController
         end
     end
 
-    def show
-        find_destination                                            #private method>>
+    def show                                            #private method>>
     end
 
     def edit
-        find_destination
     end
 
     def update
-        find_destination
         @destination.update(destination_params)
         if @destination.valid?
             redirect_to destinations_path(@destination)
@@ -37,7 +35,6 @@ class DestinationsController < ApplicationController
     end
 
     def destroy
-        find_destination
         @destination.destroy                                       #destroy removes all associated items assigned to the item
             redirect_to destinations_path
     end

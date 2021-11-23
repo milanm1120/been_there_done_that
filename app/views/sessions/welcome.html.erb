@@ -1,5 +1,12 @@
-<h1> Website welcome page </h1>
+<div class="welcome_font_color">
+    <div class="center">
+        <h3>Hello Traveller</h3>
+        <h1>Welcome to Been There Done That </h1>
 
-<%= button_to "Sign In With Google", '/auth/google_oauth2' %>
-<%= link_to 'Sign Up', signup_path %> <br>
-<%= link_to 'Log In', login_path %> 
+        
+        <%= button_to 'Sign Up', signup_path %>
+        <%= button_to 'Log In', login_path %> 
+        <br>
+        <%= button_to "Log In with Google", '/auth/google_oauth2' %>
+    </div>
+</div>

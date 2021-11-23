@@ -6,9 +6,16 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Destination.create([
-    {city: "New York City", state: "New York", country: "USA"},
-    {city: "Los Angeles", state: "California", country: "USA"},
-    {city: "Paris", state: "", country: "France"},
-    {city: "Sydney", state: "", country: "Australia"}
-    ])
+User.destroy_all
+Destination.destroy_all
+Pin.destroy_all
+
+# Destination.create([
+#     {city: "New York City", state: "New York", country: "USA"},
+#     {city: "Los Angeles", state: "California", country: "USA"},
+#     {city: "Paris", state: "", country: "France"},
+#     {city: "Sydney", state: "", country: "Australia"}
+#     ])
+
+
+milan=User.create(firstname: "Milan", lastname: "Mody", email: "milanm1120@gmail.com", password:"1234")
